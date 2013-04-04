@@ -1,0 +1,94 @@
+<head>
+  <title>stack_overflow</title>
+  <script type="text/javascript" src="http:////ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+  {{> renderPage}}
+</body>
+
+<template name="app">
+
+  <h1>My Stack Overflow</h1>
+
+  {{#each questions}}
+    {{> question}}
+  {{/each}}
+
+  {{#if username_inserted}}
+    <p>Hello {{sel_name}}<input type="button" class="logOut" value="Log out" /></p>
+    <label>Insert your question</label>
+    <textarea class="questionBox" />
+    <input type="button" class="questionBut" value="Submit"/>
+  {{/if}}
+
+  {{#unless username_inserted}}
+    <label>Insert your name</label>
+    <input type="text" class="nameBox" />
+    <input type="button" class="nameBut" value="Submit" />
+  {{/unless}}
+
+</template>
+
+<template name="question">
+
+  <div class="userQuestion">
+    <span class="name">{{name}}</span>
+    <span class="question"><a href="/{{questionChosen}}">{{question}}</a></span>
+    <span class="createdAt">{{createdAt}}</span>
+
+    {{#each answers}}
+      {{> answer}}
+    {{/each}}
+
+    <br>
+
+    {{#if username_inserted}}
+      <form class="writeAnswer">
+        <label>Write your answer</label>
+        <textarea class="answerBox" />
+        <input type="submit" class="answerBut" />
+        <br>
+      </form>
+    {{/if}}
+
+  </div>
+
+</template>
+
+<template name="answer">
+
+  <div class="userAnswer">
+    <span class="name">{{name}}</span>
+    <span class="question">{{answer}}</span>
+    <span class="createdAt">{{createdAt}}</span>
+  </div>
+
+</template>
+
+<template name="showQuestion">
+
+  <div class="userQuestion">
+    <span class="name">Hi</span>
+    <span class="question">Hi</span>
+    <span class="createdAt">Hi</span>
+  </div>
+
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
